@@ -1,0 +1,17 @@
+<%= devise_error_messages! %>
+<h2 class="text-center" style="margin: 20px 0;">Renvoyer les instructions de débloquage</h2>
+
+<div class="container text-center">
+  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Renvoyer les instructions de débloquage", class: "btn btn-outline-success", style: "margin: 10px 0;" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

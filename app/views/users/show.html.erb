@@ -1,0 +1,65 @@
+<div class="view jarallax">
+  <div class="mask rgba-indigo-slight">
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+      <div class="row pt-5 mt-3">
+        <div class="col-md-12 mb-3">
+          <div class="intro-info-content text-center">
+            <h1 class="display-3 blue-text mb-5 wow fadeInDown">
+              Bonjour <span class="text-success"> <%= @user.first_name %> </span> !<br> Comment allez vous aujourd'hui ?
+            </h1>
+            <h5 class="text-uppercase blue-text mb-5 mt-1 font-weight-bold wow fadeInDown">HEUREUX DE VOUS REVOIR PARMI NOUS</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="Userinfos">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#prenom">Prénom</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#nom">Nom</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#description">Description</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#email">Email</a>
+    </li>
+  </ul>
+  <div class="tab-content text-center">
+    <div class="tab-pane fade active show" id="prenom">
+      <p><%= @user.first_name %></p>
+    </div>
+    <div class="tab-pane fade " id="nom">
+      <p> <%= @user.last_name %></p>
+    </div>
+    <div class="tab-pane fade " id="description">
+      <p> <%= @user.description %></p>
+    </div>
+    <div class="tab-pane fade " id="email">
+      <p> <%= @user.email %></p>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" style="margin: 35px 0;">
+  <%= link_to "Ajouter un event", new_event_path , class: "btn btn-outline-danger ", style: "margin-right: 20px" %>
+  <%= link_to "Editer votre profil", edit_user_registration_path , class: "btn btn-outline-warning " %>
+</div>
+
+<div class ='align-middle text-center'>
+  <h6 class="withborder">Voici la liste de vos <strong>events</strong> :</h6>
+      <% @events.each do |event| %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="mt-0 text-center"><%= event.title %></h5>
+            <p class="card-text text-info"> <%= event.start_date.strftime("%d %B %Y") %></p>
+            <%= link_to "Afficher cet event", event_path(:id => event.id), class: 'btn btn-outline-success btn-sm' %>
+          </div>
+        </div>
+    <% end %>
+</div>
